@@ -1,20 +1,35 @@
 import TodoForm from "./components/TodoForm";
 import { useState } from "react";
 import Todo from "./components/Todo";
+import "./todos.css";
+
 function App() {
     const [todos, setTodos] = useState([]);
     const addTodo = todo => {
         if(!todo.text || /^\s$/.test(todo.text)) {
             return
         }
-        const newTodos = [...todos, todo]
+        const newTodos = [todo, ...todos]
         setTodos(newTodos)
     }
-  return (
-    <>
+
+    const completeTodo = id => {
+        let updatedTodos = todos.map( todo => {
+            if(todo.id === id) {
+                todo.isComplete = !todo.isComplete
+            }
+            return todo;
+        })
+        setTodos(updatedTodos)
+    }
+
+    return (
+    <div className="container">
         <TodoForm onSubmit={addTodo} />
-        <Todo todos={todos}/>
-    </>
+        <div className="todos-container">
+            <Todo todos={todos} completeTodo={completeTodo}/>
+        </div>
+    </div>
   );
 }
 
