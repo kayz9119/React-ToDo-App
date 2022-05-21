@@ -22,12 +22,16 @@ function App() {
         })
         setTodos(updatedTodos)
     }
+    const removeTodo = id => {
+        const removeArr = [...todos].filter(todo => todo.id !== id)
+        setTodos(removeArr)
+    }
 
     return (
     <div className="container">
         <TodoForm onSubmit={addTodo} />
         <div className="todos-container">
-            <Todo todos={todos} completeTodo={completeTodo}/>
+            <Todo todos={todos} removeTodo={removeTodo} completeTodo={completeTodo}/>
         </div>
     </div>
   );

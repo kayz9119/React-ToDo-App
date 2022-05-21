@@ -7,7 +7,9 @@ const Todo = (props) => {
                 {todo.text}
             </div>
             <div className="icons">
-                <RiCloseCircleLine />
+                <RiCloseCircleLine
+                onClick={() => props.removeTodo(todo.id)}
+                />
             </div>
         </div>
     ))
