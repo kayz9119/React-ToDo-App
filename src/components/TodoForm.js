@@ -1,10 +1,10 @@
 import {useState} from "react";
 
-function TodoForm(props) {
+function TodoForm({ onSubmit }) {
     const [input, setInput] = useState('');
     const handleSubmit = e => {
         e.preventDefault();
-        props.onSubmit({
+        onSubmit({
             id: Math.floor(Math.random() * 9999),
             text: input,
             completeTodo: false
