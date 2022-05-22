@@ -23,6 +23,9 @@ body {
     padding: 15px;
     margin: 10px 10px;
 }
+.todo > .todo-text {
+    flex: 1;
+}
 .todo-complete {
     text-decoration: line-through;
     background: #5c5c5c;
